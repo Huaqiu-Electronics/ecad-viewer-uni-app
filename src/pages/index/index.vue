@@ -1,13 +1,53 @@
 <template>
-	<view class="content">
-		<image class="logo" src="/static/logo.svg"></image>
-		<view>
-			<text class="title">{{ title }}</text>
-		</view>
-	</view>
+	<div class="flex-container">
+		<ecad-viewer-embedded url="http://localhost:8000/video/video.kicad_pcb">
+		</ecad-viewer-embedded>
+		<ecad-viewer-embedded url="http://localhost:8000/video/video.glb">
+		</ecad-viewer-embedded>
+		<ecad-viewer-embedded url="http://localhost:8000/video/video.kicad_sch;
+      http://localhost:8000/video/bus_pci.kicad_sch;
+      http://localhost:8000/video/esvideo.kicad_sch;
+      http://localhost:8000/video/graphic.kicad_sch;
+      http://localhost:8000/video/modul.kicad_sch;
+      http://localhost:8000/video/muxdata.kicad_sch;
+      http://localhost:8000/video/pal-ntsc.kicad_sch;
+      http://localhost:8000/video/rams.kicad_sch">
+		</ecad-viewer-embedded>
+	</div>
+
 </template>
 
+<style>
+ecad-viewer,
+ecad-viewer-embedded {
+	width: 100%;
+	height: 800px;
+	border: 1px solid cyan;
+	margin: 5px;
+}
+
+.flex-container {
+	display: flex;
+	margin-top: 60px;
+	margin-left: 10%;
+	margin-right: 10%;
+	flex-direction: column;
+}
+
+.col-flex-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.canvas-container {
+	margin: 10px;
+	padding: 1px;
+}
+</style>
+
 <script>
+import "../../static/ecadViewer"
+import "../../static/html_utils"
 export default {
 	data() {
 		return {
@@ -22,28 +62,3 @@ export default {
 	}
 }
 </script>
-
-<style>
-.content {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-
-.logo {
-	height: 200rpx;
-	width: 200rpx;
-	margin: 200rpx auto 50rpx auto;
-}
-
-.text-area {
-	display: flex;
-	justify-content: center;
-}
-
-.title {
-	font-size: 36rpx;
-	color: #8f8f94;
-}
-</style>
